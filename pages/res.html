@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/base.css">
+
+    <style>
+        .inputWidth {
+            width: 200px;
+            display: inline-block;
+        }
+
+        .spanspan {
+            color: red;
+            font-size: 20px;
+        }
+
+        .cover {
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .5);
+        }
+
+        .content {
+            width: 500px;
+            margin: 0 auto;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="jumbotron">
+        <div class="content">
+            <h1>欢迎注册</h1>
+            <div class="login">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label">用户名</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="username" class="form-control inputWidth" placeholder="用户名">
+                            <span class="spanspan"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-2 control-label">密码</label>
+                        <div class="col-sm-10">
+                            <input type="password" name="userpwd1" class="form-control inputWidth" placeholder="密码">
+                            <span class="spanspan"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="col-sm-2 control-label">确认密码</label>
+                        <div class="col-sm-10">
+                            <input type="password" name="userpwd2" class="form-control inputWidth" placeholder="确认密码">
+                            <span class="spanspan"></span>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="col-sm-2 control-label">验证码</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="vc1" class="form-control inputWidth" id="ac" placeholder="验证码"> <a
+                                id="sc"></a>
+                            <span name="vc2" style="font-size: 20px;"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button name="res" class="btn btn-default">注册</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXTZ0123456789';
+
+        function setVc() {
+            let newStr = '';
+            for (let i = 1; i <= 4; i++) {
+                //定义一个随机数
+                let num = parseInt(Math.random() * str.length);//random取值0-1之间，不能取0，1;parseInt取整数
+                if (newStr.indexOf(str[num]) === -1) {//'abc'.indexOf('a')返回0,'abc'.indexOf('d') ===-1;
+                    newStr += str[num];
+
+                } else {
+                    i--;
+                }
+            }
+            return newStr;
+        }
+
+        $('[name="vc2"]').html(setVc());//html( setVc() )显示验证码
+
+        $('[name="vc2"]').click(function () {//刷新验证码
+            $(this).html(setVc());
+        })
+
+        $('[name="res"]').click(function () {
+            // 1,收集数据
+            let username = $('[name="username"]').val();
+            let userpwd1 = $('[name="userpwd1"]').val();
+            let userpwd2 = $('[name="userpwd2"]').val();
+            let uservc = $('[name="vc1"]').val();
+            let uservc2 = $('[name="vc2"]').text()
+
+            // 2,做验证判断
+            // 就做一个 密码和确认密码一致
+            // 验证码一致
+
+            // 两个验证码必须一致
+            if (userpwd1 !== userpwd2) {
+                window.alert('两次密码不一致');
+                return false;
+            }
+
+            // 判断验证码
+            console.log(uservc)
+            console.log(uservc2)
+            if (uservc.toLowerCase() !== uservc2.toLowerCase()) {
+                window.alert('验证码不正确');
+                return false;
+            }
+            let userList = JSON.parse(localStorage.getItem('__user__'));
+            userList.push({
+                username: username,
+                userpwd: userpwd1
+            })
+            localStorage.setItem('__user__', JSON.stringify(userList));
+            alert('注册成功,即将进入登录页面');
+            setTimeout(location.href = './login.html', 2000)
+
+
+            /*             $.ajax({
+                            url: '../server/goods_res.php',
+                            type: 'post',
+                            data: { userName: username, userPwd: userpwd1 },
+                            dataType: 'json',
+                            success: function (res) {
+                                if (res == '1') {
+                                    window.alert('注册成功,点击确定,跳转首页');
+                                    window.location.href = '../index.html';
+                                } else if (res == '0') {
+                                    window.alert('注册失败');
+                                }
+                            }
+                        }) */
+
+        })
+    </script>
+
+</body>
+
+</html>

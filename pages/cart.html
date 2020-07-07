@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/caet.css">
+</head>
+
+<body>
+    <h1>购物车</h1>
+
+    <div class="container">
+        <div class="panel panel-info ">
+            <div class="panel-body bg-info">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">
+                        <button name="all">全选</button>
+                        <button name="no">全取消</button>
+                    </label>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <ul class="cart-list">
+                    <li class="cart-item1">
+                        <div class="left">
+                            <input type="checkbox">
+                        </div>
+                        <div class="right">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object"
+                                            src="https://g-search3.alicdn.com/img/bao/uploaded/i4/i3/2898933862/O1CN01ExuNHp1eOq9TKoRh6_!!2898933862.jpg_580x580Q90.jpg_.webp"
+                                            alt="...">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述
+                                    </h4>
+                                    <p>
+                                        <i class="glyphicon glyphicon-yen"></i>
+                                        <span class="price">100</span>
+                                    </p>
+                                    <div class="btn-group pull-right" role="group" aria-label="...">
+                                        <button type="button" class="btn btn-default decrementBtn">-</button>
+                                        <button type="button" class="btn btn-default countContainer" disabled>1</button>
+                                        <button type="button" class="btn btn-default incrementBtn">+</button>
+                                    </div>
+                                    <button class="del btn btn-danger deleteBtn">我不要了</button>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <li>¥<input type="text" name="price" value="21.90"></li>
+                    <li><input type="button" name="minus" value="-" onclick="minus(0)"><input type="text" name="amount"
+                            value="1"><input type="button" name="plus" value="+" onclick="plus(0)"></li>
+                    <li id="price0">¥21.90</li> -->
+                    </li>
+                    <li class="cart-item2">
+                        <div class="left">
+                            <input type="checkbox">
+                        </div>
+                        <div class="right">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object"
+                                            src="https://g-search3.alicdn.com/img/bao/uploaded/i4/i3/2898933862/O1CN01ExuNHp1eOq9TKoRh6_!!2898933862.jpg_580x580Q90.jpg_.webp"
+                                            alt="...">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述
+                                    </h4>
+                                    <p>
+                                        <i class="glyphicon glyphicon-yen"></i>
+                                        <span class="price">100</span>
+                                    </p>
+                                    <div class="btn-group pull-right" role="group" aria-label="...">
+                                        <button type="button" class="btn btn-default decrementBtn">-</button>
+                                        <button type="button" class="btn btn-default countContainer" disabled>1</button>
+                                        <button type="button" class="btn btn-default incrementBtn">+</button>
+                                    </div>
+                                    <button class="del btn btn-danger deleteBtn">我不要了</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="cart-item3">
+                        <div class="left">
+                            <input type="checkbox">
+                        </div>
+                        <div class="right">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object"
+                                            src="https://g-search3.alicdn.com/img/bao/uploaded/i4/i3/2898933862/O1CN01ExuNHp1eOq9TKoRh6_!!2898933862.jpg_580x580Q90.jpg_.webp"
+                                            alt="...">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述
+                                    </h4>
+                                    <p>
+                                        <i class="glyphicon glyphicon-yen"></i>
+                                        <span class="price">100</span>
+                                    </p>
+                                    <div class="btn-group pull-right" role="group" aria-label="...">
+                                        <button type="button" class="btn btn-default decrementBtn">-</button>
+                                        <button type="button" class="btn btn-default countContainer" disabled>1</button>
+                                        <button type="button" class="btn btn-default incrementBtn">+</button>
+                                    </div>
+                                    <button class="del btn btn-danger deleteBtn">我不要了</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <p class="totalMoney">总金额为：</p>
+            </div>
+        </div>
+    </div>
+    <div class="box1">
+        <a href="./pay.html">去支付</a>
+    </div>
+
+    <script src="../js/jquery.min.js"></script>
+
+    <script>
+        window.onload = function () {
+            let count = 0
+            $(".cart-list>li").each(function (index) {
+                count += Number($(this).find(".price").html()) * Number($(this).find('.countContainer').html());
+                $('.totalMoney').html('总金额为:' + count)
+            })
+        }
+
+
+        // 操作布尔值,必须使用prop()
+        // 1,全选效果
+        // 给所有的input标签, checked 布尔属性,属性值设定为 true
+        // jQuery中有隐式迭代,默认是给所有的标签都设定
+
+        // 给全选button标签添加点击事件 --- 选中 checked 为 true
+        $('[name="all"]').click(function () {
+            $('input').prop('checked', true);
+        })
+
+
+        // 2,取消效果
+        // 给所有的input标签, checked 布尔属性,属性值设定为 false
+        // jQuery中有隐式迭代,默认是给所有的标签都设定
+
+        // 给全选button标签添加点击事件 --- 取消 checked 为 false
+        $('[name="no"]').click(function () {
+            $('input').prop('checked', false);
+        })
+
+        $(".cart-list>li").each(function (index) {
+            let _that = $(this);
+            $(this).find(".deleteBtn").click(function () {
+                let count = 0
+                _that.remove();
+                if ($(".cart-list>li").length) {
+                    $(".cart-list>li").each(function (index) {
+                        count += Number($(this).find(".price").html()) * Number($(this).find('.countContainer').html());
+                        $('.totalMoney').html('总金额为:' + count)
+                    })
+                } else {
+                    $(".totalMoney").html('总金额为:0')
+                }
+
+            })
+            $(`.cart-item${index + 1} .decrementBtn`).click(function () {
+                console.log($(`.cart-item${index + 1} .countContainer`).html())
+                if (Number($(`.cart-item${index + 1} .countContainer`).html()) <= 0) {
+                    window.alert("至少购买一件")
+                } else {
+                    let count = 0;
+                    $(`.cart-item${index + 1} .countContainer`).html(Number($(`.cart-item${index + 1} .countContainer`).html()) - 1);
+                    $(".cart-list>li").each(function (index) {
+                        count += Number($(this).find(".price").html()) * Number($(this).find('.countContainer').html());
+                        $('.totalMoney').html('总金额为:' + count)
+                    })
+                }
+
+                // $(".totalMoney").html("总金额为" + $(`.cart-item .countContainer`).html() * $(`.cart-item${index + 1} .price`).html())
+            })
+
+            $(`.cart-item${index + 1} .incrementBtn`).click(function () {
+
+                let count = 0
+                $(`.cart-item${index + 1} .countContainer`).html(Number($(`.cart-item${index + 1} .countContainer`).html()) + 1);
+                $(".cart-list>li").each(function (index) {
+                    count += Number($(this).find(".price").html()) * Number($(this).find('.countContainer').html());
+                    $('.totalMoney').html('总金额为:' + count)
+                })
+
+
+            })
+        })
+    </script>
+</body>
+
+</html>

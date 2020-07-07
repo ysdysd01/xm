@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <style>
+       
+    </style>
+</head>
+
+<body>
+    <ul class="jumbotron">
+        <h1>欢迎光临
+            <a href="./pages/res.html" class="btn btn-danger btn-lg" role="button">注册</a>
+            <a href="./pages/login.html" class="btn btn-danger btn-lg" role="button">登录</a>
+           
+        </h1>
+
+    </ul>
+
+<!-- search -->
+<div id="box" class="container-fluid">
+    <div id="search" class="containe">
+        <div class="search-logo">
+            <a href="#" class="img1"><img src="./img/pic-1.png" alt=""></a>
+            <a href="#" class="img2"><img src="./img/pic-1-2.png" alt=""></a>
+        </div>
+        
+
+
+
+
+
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/cookie.js"></script>
+    <script src="./dataSave.js"></script>
+
+    <script>
+        //  在根目录页面中来设定cookie
+        //  也就是在 index.html中设定 cookie 这样,所有的文件夹,文件,都可以使用cookie
+        //  如果地址栏中,有相关登录成功的信息,我们就可以判断需要设定cookie了
+        //  window.location.search 获取 页面地址栏中,是否有参数
+        //  有参数,是参数内容,带有 ?问号  没有参数,是空字符串
+
+        // 有参数时,设定cookie
+        if (window.location.search !== '') {
+            // 地址栏参数有数据,证明不是空字符串,我可设定cookie
+
+            // 先获取 地址栏参数,有可能有中文,需要转化
+            // 参数前带有 ? ,我们需要去除掉问号
+            let str = decodeURIComponent(window.location.search);
+            // 从索引是1,实际是第二位字符开截取,截取至字符串末位,去除掉问号 
+            // 字符串就是 login=登录状态码
+            // login就是cookie的键名 登录状态码就是cookie的数值数据
+            str = sre.substr(1);
+            // 根据 = 等号,转化为数组
+            // arr[0] 就是 login      就是 cookie的键名
+            // arr[1] 就是 登录状态码  就是 cookie的数据
+            const arr = str.split('=');
+            // 设定cookie
+            setCookies(arr[0], arr[1], 7 * 24 * 60 * 60);
+        }
+
+        // 退出登录,就是删除 cookie中的login
+        $('[name="back"]').click(function () {
+            setCookies('login', '随便', -1);
+            window.alert('您已经退出登录了');
+        })
+
+        // 购物车,.有cookie中的login,可以跳转,没有login,先登录
+        $('[name="buyCar"]').click(function () {
+            // 判断是否有login
+            // 获取cookie对象
+            const cookieObj = getCookieObj(document.cookie);
+
+            // 如果对象中没有login,获取结果是 undefined
+            if (cookieObj['login'] === undefined) {
+                // 弹出确认框,看用户是否现在就要去登录 
+                // 如果点击确认框的确定,执行结果是true
+                let bool = window.confirm('您还没有登录,点击确定,跳转登录页面');
+                // 如果点击的结果是true,证明点击的是确定,跳转至登录页面
+                if (bool === true) {
+                    window.location.href = './pages/login.html';
+                }
+                // 如果 有 login 的登录状态码,证明已经登录
+                // 直接跳转至购物车页面
+
+            } else if (cookieObj['login'] === '1') {
+                window.location.href = './pages/cart.html'
+            }
+
+        })
+    </script>
+
+<div class="banner">
+    <ul class="clear">
+        <li> <img src="./message/9a366ab25c92bea8.jpg.webp" alt=""></li>
+        <li> <img src="./message/03b08941010f9eda.jpg.webp" alt=""></li>
+        <li> <img src="./message/3c969b3300def29f.jpg.webp" alt=""></li>
+        <li> <img src="./message/590x470.jpg" alt=""></li>
+        <li> <img src="./message/8207ad0551d4d2a2.jpg.webp" alt=""></li>
+        
+    </ul>
+    <ol></ol>
+    <div>
+        <a href="JavaScript:;" name="left"> < </a>
+        <a href="JavaScript:;" name="right"> > </a>
+    </div>
+</div>
+
+<script src="./js/banner.js"></script>
+
+<script>
+    //获取标签对象
+    const oDiv = document.querySelector('div');
+
+    // 创建实例化对象
+    const setLoop = new SetLoop(oDiv);
+
+    // 调用生成焦点方法
+    setLoop.setLi();
+    // 调用复制标签方法
+    setLoop.copyLi();
+    // 调用自动轮播方法
+    setLoop.autoLoop();
+    // 调用鼠标移入移出方法
+    setLoop.overOut();
+    // 调用焦点切换方法
+    setLoop.focus();
+    // 调用左右切换方法
+    setLoop.leftRight();
+    //调用解决页面隐藏的方法
+    setLoop.hidden();
+
+
+
+</script>
+
+</body>
+
+</html>
